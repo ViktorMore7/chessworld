@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn world capitals through chess champions! An educational quiz for kids.">
+    <title>Grandmaster Geography Quest</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Fredoka One', 'cursive'],
+                        'body': ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        'chess-dark': '#2C3E50',
+                        'chess-gold': '#F1C40F',
+                        'chess-cream': '#FDF6E3',
+                        'chess-green': '#27AE60',
+                        'chess-red': '#E74C3C',
+                        'chess-blue': '#3498DB'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-chess-cream min-h-screen font-body overflow-x-hidden">
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 opacity-5 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M0 0h20v20H0V0zm20 20h20v20H20V20z\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <!-- Main App Container -->
+    <div id="app" class="relative z-10 container mx-auto px-4 py-4 max-w-4xl min-h-screen flex flex-col">
+        
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="font-display text-4xl md:text-5xl text-chess-dark mb-2 drop-shadow-sm">
+                <span class="text-chess-gold">♔</span> Grandmaster Geography <span class="text-chess-gold">♔</span>
+            </h1>
+            <p class="text-gray-600 text-lg font-semibold">Match the Champions to their Capitals!</p>
+        </header>
+
+        <!-- Settings Bar -->
+        <div class="flex justify-center gap-4 mb-6 flex-wrap">
+            <button onclick="toggleSound()" id="sound-btn" class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all border-2 border-chess-dark">
+                <i data-feather="volume-2" class="w-5 h-5"></i>
+                <span class="font-bold text-sm">Sound On</span>
+            </button>
+            
+            <select id="difficulty-select" onchange="changeDifficulty(this.value)" class="px-4 py-2 bg-white rounded-full shadow-md border-2 border-chess-dark font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-chess-gold">
+                <option value="easy">🌟 Easy Mode</option>
+                <option value="hard">🎯 Hard Mode</option>
+            </select>
+
+            <button onclick="resetProgress()" class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all border-2 border-chess-red text-chess-red">
+                <i data-feather="refresh-cw" class="w-5 h-5"></i>
+                <span class="font-bold text-sm">Restart</span>
+            </button>
+        </div>
+
+        <!-- Game Container -->
+        <main id="game-container" class="flex-grow flex flex-col items-center justify-center w-full">
+            <!-- Dynamic content injected here -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-8 text-sm text-gray-500 pb-4">
+            <p>Made for future Grandmasters 🏆</p>
+        </footer>
+    </div>
+
+    <!-- Canvas for Confetti -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    <!-- Web Components -->
+    <script src="components/progress-tracker.js"></script>
+    <script src="components/champion-card.js"></script>
+    <script src="components/answer-options.js"></script>
+    <script src="components/feedback-panel.js"></script>
+    <script src="components/results-screen.js"></script>
+
+    <!-- Main Logic -->
+    <script src="script.js"></script>
+    <!-- Initialize Icons -->
+    <script>feather.replace();</script>
+</body>
+</html>

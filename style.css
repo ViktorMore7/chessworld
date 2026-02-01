@@ -1,0 +1,192 @@
+/* Custom Chess Theme Styles */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FDF6E3;
+}
+
+.font-display {
+    font-family: 'Fredoka One', cursive;
+}
+
+/* Custom Animations */
+@keyframes bounce-in {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(241, 196, 15, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0); }
+}
+
+@keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Animation Classes */
+.animate-bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-shake {
+    animation: shake 0.5s;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.4s ease-out;
+}
+
+.animate-pulse-gold {
+    animation: pulse-gold 2s infinite;
+}
+
+/* Button Styles */
+.option-btn {
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn:active {
+    transform: scale(0.95);
+}
+
+.option-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.option-btn.correct {
+    background-color: #27AE60 !important;
+    color: white !important;
+    border-color: #27AE60 !important;
+    animation: pulse-gold 1s;
+}
+
+.option-btn.wrong {
+    background-color: #E74C3C !important;
+    color: white !important;
+    border-color: #E74C3C !important;
+    animation: shake 0.5s;
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Champion Card Styles */
+.champion-portrait {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: 4px solid #2C3E50;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Progress Bar */
+.progress-fill {
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(90deg, #F1C40F 0%, #f39c12 100%);
+}
+
+/* Certificate Styles for Printing */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #certificate-section, #certificate-section * {
+        visibility: visible;
+    }
+    #certificate-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Focus Visible for Accessibility */
+button:focus-visible, 
+select:focus-visible {
+    outline: 3px solid #F1C40F;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .option-btn {
+        border-width: 3px;
+    }
+    .text-gray-600 {
+        color: #000;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FDF6E3;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2C3E50;
+    border-radius: 6px;
+    border: 3px solid #FDF6E3;
+}
+
+/* Streak Counter Animation */
+.streak-flame {
+    filter: drop-shadow(0 0 10px rgba(241, 196, 15, 0.8));
+}
